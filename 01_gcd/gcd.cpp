@@ -3,7 +3,7 @@
 # include <stdlib.h>
 
 int gcdByDef(int a, int b) {
-    int small = a<=b ? a : b; 
+    int small = a <= b ? a : b; 
     //std::cout << "small: " << small << ", a=" << a << ", b=" << b << std::endl;
     int ans;
     for (int i=1; i<=small; ++i) {
