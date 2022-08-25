@@ -3,14 +3,44 @@
 # include <stack>
 # include <string>
 
-void validParentheses(std::string input) {
+
+bool validParentheses_stl(const std::string &input) {
     std::stack<char> s;
+    int N = input.length();
+    char ch;
 
-    s.push('(');
-    s.push(')');
+    for (int i = 0; i < N; ++i) {
+        ch = input[i];
+        if ( (ch == '(') || (ch == '[') || (ch == '{') ) {
+            s.push(ch);
+        } 
+        else if ( (ch == ')') || (ch == ']') || (ch == '}') ) {
+            if (s.empty()) {
+                return false;
+            } 
+            else {
+                switch (ch) {
+                    case ')':
+                        if (s.top() != '(') return false;
+                        break;
+                    case ']':
+                        if (s.top() != '[') return false;
+                        break;
+                    case '}':
+                        if (s.top() != '{') return false;
+                        break;
+                }
+            }
+            s.pop();
+        }
+    }
+    if (s.empty()) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
-
-
 
 
 int main(int argc, char** argv) {
@@ -18,7 +48,13 @@ int main(int argc, char** argv) {
         if (argc != 2) {
             throw std::invalid_argument("Require a input string");
         }
-        validParentheses(argv[1]);
+        std::cout << "Input String: " << argv[1] << std::endl;
+        if (validParentheses_stl(argv[1])) {
+            std::cout << "Is Valid" << std::endl;
+        }
+        else {
+            std::cout << "Is Not Valid" << std::endl;
+        }
         return 0;
     }
     catch (const std::invalid_argument e) {
