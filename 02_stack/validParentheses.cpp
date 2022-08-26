@@ -9,8 +9,9 @@ bool validParentheses_stl(const std::string &input) {
     int N = input.length();
     char ch;
 
-    for (int i = 0; i < N; ++i) {
-        ch = input[i];
+    //for (int i = 0; i < N; ++i) {
+        //ch = input[i];
+    for (const char &ch : input) {
         if ( (ch == '(') || (ch == '[') || (ch == '{') ) {
             s.push(ch);
         } 
