@@ -6,9 +6,10 @@
 
 bool validParentheses_stl(const std::string &input) {
     std::stack<char> s;
-    int N = input.length();
-    char ch;
 
+    // Original non-C++11 way
+    //int N = input.length();
+    //char ch;
     //for (int i = 0; i < N; ++i) {
         //ch = input[i];
     for (const char &ch : input) {
