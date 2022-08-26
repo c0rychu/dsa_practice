@@ -31,10 +31,11 @@ int main(int argc, char** argv) {
         } 
 
         std::cout << gcdByDef(x, y) << std::endl;
-    return 0;
+        return 0;
     }
     catch (const std::invalid_argument &e) {
         std::cout << "Error: " << e.what() << std::endl;
         std::cout << "Usage: gcd <int a> <int b>" << std::endl;
+        return -1;
     }
 }

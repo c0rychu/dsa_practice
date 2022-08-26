@@ -60,6 +60,7 @@ int main(int argc, char** argv) {
     catch (const std::invalid_argument e) {
         std::cout << "Error: " << e.what() << std::endl;
         std::cout << "Usage: validParentheses <string>" << std::endl;
+        return -1;
     }
 }
 
