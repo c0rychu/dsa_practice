@@ -7,7 +7,7 @@ template <class T>
 class Stack {
     public: 
         Stack(size_t MAX_N) : _now(0) { _arr = new T[MAX_N]; }
-        Stack() { Stack(1024); }
+        Stack() : Stack(1024) {}
         ~Stack() { delete[] _arr; }
 
         T top();
