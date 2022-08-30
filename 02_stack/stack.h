@@ -2,7 +2,6 @@
 #ifndef STACK_H
 #define STACK_H
 
-
 template <class T>
 class Stack {
     public: 
@@ -10,15 +9,24 @@ class Stack {
         Stack() : Stack(1024) {}
         ~Stack() { delete[] _arr; }
 
-        T top();
-        void pop();
-        void push(T item);
-        size_t size();
+        T top() {
+            return _arr[_now-1];
+        }
+        void pop() {
+            if (_now != 0) {
+                _now--;
+            }
+        }
+        void push(T item) {
+            _arr[_now++] = item;
+        }
+        size_t size() {
+            return _now;
+        }
 
     private:
         T* _arr;
         size_t _now;
 };
-
 
 #endif

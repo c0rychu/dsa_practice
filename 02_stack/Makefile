@@ -6,7 +6,7 @@ all: validParentheses
 %.o: %.cpp %.h
 	g++ $(CXXFLAGS) -c $<
 
-validParentheses: stack.o validParentheses.o
+validParentheses: validParentheses.o
 	g++ $^ -o $@
 
 clean:

@@ -86,14 +86,25 @@ int main(int argc, char** argv) {
         if (argc != 2) {
             throw std::invalid_argument("Require a input string");
         }
+
         std::cout << "Input String: " << argv[1] << std::endl;
-        //if (validParentheses_stl(argv[1])) {
-        if (validParentheses(argv[1])) {
-            std::cout << "Is Valid" << std::endl;
+
+        // STL
+        if (validParentheses_stl(argv[1])) {
+            std::cout << "STL: Is Valid" << std::endl;
         }
         else {
-            std::cout << "Is Not Valid" << std::endl;
+            std::cout << "STL: Is Not Valid" << std::endl;
         }
+
+        // My Stack
+        if (validParentheses(argv[1])) {
+            std::cout << "My: Is Valid" << std::endl;
+        }
+        else {
+            std::cout << "My: Is Not Valid" << std::endl;
+        }
+
         return 0;
     }
     catch (const std::invalid_argument e) {
