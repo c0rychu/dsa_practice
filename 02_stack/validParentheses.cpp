@@ -1,8 +1,44 @@
-# include <iostream>
-# include <stdexcept>
-# include <stack>
-# include <string>
+#include <iostream>
+#include <stdexcept>
+#include <stack>
+#include <string>
 
+#include "stack.h"
+
+bool validParentheses(const std::string &input) {
+    Stack<char> s;
+
+    for (const char &ch : input) {
+        if ( (ch == '(') || (ch == '[') || (ch == '{') ) {
+            s.push(ch);
+        } 
+        else if ( (ch == ')') || (ch == ']') || (ch == '}') ) {
+            if (s.size() == 0) {
+                return false;
+            } 
+            else {
+                switch (ch) {
+                    case ')':
+                        if (s.top() != '(') return false;
+                        break;
+                    case ']':
+                        if (s.top() != '[') return false;
+                        break;
+                    case '}':
+                        if (s.top() != '{') return false;
+                        break;
+                }
+            }
+            s.pop();
+        }
+    }
+    if (s.size() == 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 
 bool validParentheses_stl(const std::string &input) {
     std::stack<char> s;
@@ -51,7 +87,8 @@ int main(int argc, char** argv) {
             throw std::invalid_argument("Require a input string");
         }
         std::cout << "Input String: " << argv[1] << std::endl;
-        if (validParentheses_stl(argv[1])) {
+        //if (validParentheses_stl(argv[1])) {
+        if (validParentheses(argv[1])) {
             std::cout << "Is Valid" << std::endl;
         }
         else {

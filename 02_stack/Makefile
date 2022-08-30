@@ -1,6 +1,12 @@
-source = validParentheses
+.PHONY: all clean
 
-all: $(source)
+all: validParentheses
 
-%: %.cpp
-	g++ -O2 -std=c++14 $< -o $@
+%.o: %.cpp %.h
+	g++ --std=c++14 -O2 -c $<
+
+validParentheses: stack.o validParentheses.o
+	g++ $^ -o $@
+
+clean:
+	-rm *.o
